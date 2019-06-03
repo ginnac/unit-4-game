@@ -8,45 +8,56 @@
 
     <!-- linkng to jquery library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- link it to bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--link it to reset.css -->
     <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- link it to bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--link it to style.css -->
     <link rel="stylesheet" href="assets/css/style.css">
 
 
    
 </head>
-<body>
-    <h1>Crystal Collector!!!</h1>
+<body class= "container" id="content">
 
-    <div> 
-        <p>You will be given a random number at the start of the game.</p>
-        <p>There are 4 crystals below. By clicking on a crystal you will add a specific amount of 
+    <div class="row">
+    <h1 class="col-12 title d-flex justify-content-center ">Crystal Collector!!!</h1>
+    </div>
+
+    <div class="row paragraphs"> 
+        <p class="col-12">You will be given a random number at the start of the game.</p>
+        <p class="col-12">There are 4 crystals below. By clicking on a crystal you will add a specific amount of 
             points to your total score.
         </p>
-        <p>You win the game by matching your total score to the random number, you loose the game 
+        <p class="col-12">You win the game by matching your total score to the random number, you loose the game 
             if your total score goes above the random number.
         </p>
 
-        <p>
+        <p class="col-12">
             The value of each crystal is hidden from you until you click on it
         </p>
 
-        <p>Each time when the game starts, the game will change the values of each crystal.</p>
+        <p class="col-12">Each time when the game starts, the game will change the values of each crystal.</p>
 
     </div>
 
-    <div id="number-to-score"></div>
-    <div id="win-lose-chart">
-        <p>Wins: </p>
-        <p id="win"> 0 </p>
-        <p> Losses:</p>
-        <p id="lose"> 0 </p>
+    <div class="row">
+        <div id="number-to-score" class="number-to-score col-3 d-flex justify-content-center"></div>
+        <div class="col-9"></div>
+            <div id="win-chart" class="col-6 row">
+                <p class="col-5 col-md-3 chart">Wins: </p>
+                <p id="win" class="col-7 col-md-9 chart"> 0 </p>
+            </div>
+            <div id="lose-chart" class="row col-6 ">
+                <p class="col-5 col-md-3 chart"> Loses:</p>
+                <p id="lose" class="col-7 col-md-9 chart"> 0 </p>
+            </div>
+                
+        </div>
     </div>
 
-    <div id = "crystals">
+    <div class="row">
+    <div id = "crystals" class="col-12">
         <img id="first-diamond" class="picture" src="assets/images/Diamond-blue.jpg" 
         alt="blue diamond" value="">
         <img id="second-diamond" class="picture" src="assets/images/diamond-crystal.jpeg" 
@@ -56,11 +67,14 @@
         <img id="fourth-diamond" class="picture" src="assets/images/diamond-orange.jpg" 
         alt="orange diamond" value="">
     </div>
+    
+    
      
+    <div class="row">
+    <div class="col-12 score d-flex justify-content-center">Your total score is:</div>
 
-    <div>Your total score is:</div>
-
-    <div id="your-score"></div>
+    <div id="your-score" class="col-12 your-score d-flex justify-content-center"></div>
+    </div>
 
 <!-- linking to game.js -->
 <script src="assets/javascript/game.js" type="text/javascript"></script>

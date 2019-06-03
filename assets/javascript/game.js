@@ -5,6 +5,8 @@ $(document).ready(function(){
 var firstDiamondValue = "" ;
 var secondDiamondValue = "";
 var thirdDiamondValue = "";
+var fourthDiamondValue = "";
+var clicks =[];
 
     //....................lets generate the randomBaseNumber between 19-120 and write it in id="number-to-score".......................
 
@@ -16,7 +18,6 @@ var thirdDiamondValue = "";
                 console.log(randomBaseNumber);
             
             //maybe inside (or outside) the loop lets choose a random one and then write it in the DOM this has to have a variable becuase we will use it 
-            //later for conditionals to see if user won or lost.
 
     var bigNumber = randomBaseNumber[Math.floor(Math.random()*randomBaseNumber.length)];
                     //testing bigNumber
@@ -24,6 +25,24 @@ var thirdDiamondValue = "";
 
             //write bigNumber in id= number-to-score
     $("#number-to-score").html(bigNumber);
+
+
+    function winnerAndClearScore(){
+//lets create loop to later randomly choose a number from
+        for (var i=19;i<121;i++){
+            randomBaseNumber.push(i);}
+    //lets choose a random bigNumber and then write it in the DOM this has to have a variable becuase we will use it later....
+        bigNumber = randomBaseNumber[Math.floor(Math.random()*randomBaseNumber.length)];
+    //write bigNumber in id= number-to-score
+        $("#number-to-score").html(bigNumber);
+//lets clear total score
+        clicks=[];
+        $( "#your-score" ).empty();
+//lets give new random values to diamonds....
+        
+        
+
+    }
 
 
     
@@ -90,31 +109,163 @@ var thirdDiamondValue = "";
                                                 console.log(thirdDiamondValue);
 
 
-                //remove firstDiamond from crystalNumbers
-                var index = $.inArray(thirdDiamond,crystalNumbers)
-                if (index > -1){
-                crystalNumbers.splice(index, 1)} 
+        //remove firstDiamond from crystalNumbers
+        var index = $.inArray(thirdDiamond,crystalNumbers)
+        if (index > -1){
+        crystalNumbers.splice(index, 1)} 
                                         //testing it has been removed
                                         console.log(crystalNumbers)
     
     //forthDiamond...from updated crytalNumbers assign number to forthDiamond
-    var forthDiamond = crystalNumbers[Math.floor(Math.random()*crystalNumbers.length)];
+    var fourthDiamond = crystalNumbers[Math.floor(Math.random()*crystalNumbers.length)];
                                             //testing firstDiamond
-                                             console.log(forthDiamond);
-                //remove firstDiamond from crystalNumbers
-                var index = $.inArray(forthDiamond,crystalNumbers)
-                if (index > -1){
-                crystalNumbers.splice(index, 1)} 
+                                             console.log(fourthDiamond);
+
+        fourthDiamondValue = $("#fourth-diamond").val();
+        fourthDiamondValue += fourthDiamond;
+        fourthDiamondValue= parseInt(fourthDiamondValue);
+                                                    //testing secondDiamond
+                                                    console.log(fourthDiamondValue);
+        
+        //remove firstDiamond from crystalNumbers
+        var index = $.inArray(fourthDiamond,crystalNumbers)
+        if (index > -1){
+        crystalNumbers.splice(index, 1)} 
                                         //testing it has been removed
                                         console.log(crystalNumbers)
 
         //maybe function????
-    $( "#first-diamond" ).on( "click", function() {
-        // if(){
-        // $("#your-score").html(firstDiamondValue);
-        // }
+    $( "#first-diamond" ).on( "click", function diamond1() {
+        //pushing to array, for the following conditional
+        clicks.push(firstDiamondValue);
+       //if there is just 1 element in the array then write the number on #your- score
+        if(clicks.length === 1){
+        $("#your-score").html(firstDiamondValue);
+       }
+
+       //else let's add firstDiamondValue to the score
+       else{
+       //store text inside id #your score    
+        var score = $("#your-score").text();
+                            //testing we have stored it... 
+                            console.log (score);
+        //converting score which is a string into a number
+        score = parseInt(score);
+        //adding firstDiamondValue to it
+        score = score + firstDiamondValue;
+        //printing update score on the Dom
+        $("#your-score").html(score);
+       }
+
+       if(score===bigNumber){
+           var wins = $("#win").text();
+           wins = parseInt(wins);
+           wins = wins + 1;
+           $("#win").html(wins);  
+           winnerAndClearScore();
+       }
+
+    });   
     
-    });    
+    $( "#second-diamond" ).on( "click", function diamond2() {
+         //pushing to array, for the following conditional
+        clicks.push(secondDiamondValue);
+         //if there is just 1 element in the array then write the number on #your- score
+        if(clicks.length === 1){
+       $("#your-score").html(secondDiamondValue);
+        } 
+        //else let's add secondtDiamondValue to the score
+        else{
+        //store text inside id #your score 
+        var score = $("#your-score").text();
+                            //testing we have stored it... 
+                            console.log (score);
+        //converting score which is a string into a number                   
+        score = parseInt(score);
+         //adding secondDiamondValue to it
+        score = score + secondDiamondValue;
+         //printing update score on the Dom
+         $("#your-score").html(score);
+        }
+
+        if(score===bigNumber){
+            var wins = $("#win").text();
+            wins = parseInt(wins);
+            wins = wins + 1;
+            $("#win").html(wins);
+            winnerAndClearScore();  
+        }
+    
+    }); 
+    $( "#third-diamond" ).on( "click", function diamond3() {
+         //pushing to array, for the following conditional
+        clicks.push(thirdDiamondValue);
+         //if there is just 1 element in the array then write the number on #your- score
+        if(clicks.length === 1){
+      $("#your-score").html(thirdDiamondValue);
+        }
+        //else let's add thirdDiamondValue to the score
+        else{
+            //store text inside id #your score 
+            var score = $("#your-score").text();
+                                //testing we have stored it... 
+                                console.log (score);
+            //converting score which is a string into a number                   
+            score = parseInt(score);
+             //adding thirdDiamondValue to it
+            score = score + thirdDiamondValue;
+             //printing update score on the Dom
+             $("#your-score").html(score);
+            }
+        if(score===bigNumber){
+                var wins = $("#win").text();
+                wins = parseInt(wins);
+                wins = wins + 1;
+                $("#win").html(wins);  
+                winnerAndClearScore();
+        }
+
+    }); 
+    $( "#fourth-diamond" ).on( "click", function diamond4() {
+         //pushing to array, for the following conditional
+        clicks.push(fourthDiamondValue);
+         //if there is just 1 element in the array then write the number on #your- score
+        if(clicks.length === 1){
+        $("#your-score").html(fourthDiamondValue);
+        }
+        //else let's add fourthDiamondValue to the score
+        else{
+            //store text inside id #your score 
+            var score = $("#your-score").text();
+                                //testing we have stored it... 
+                                console.log (score);
+            //converting score which is a string into a number                   
+            score = parseInt(score);
+             //adding fourthDiamondValue to it
+            score = score + fourthDiamondValue;
+             //printing update score on the Dom
+             $("#your-score").html(score);
+            }
+        if(score===bigNumber){
+                var wins = $("#win").text();
+                wins = parseInt(wins);
+                wins = wins + 1;
+                $("#win").html(wins);
+                winnerAndClearScore();
+        }
+    }); 
+
+    console.log(clicks);
+
+//     function win(){
+//     diamond1();
+//     diamond2();
+//     diamond3();
+//     diamond4();
+
+// }
+
+    
 
 
             

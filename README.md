@@ -11,7 +11,7 @@ Random Winner number between 19 and 120 is set; the each diamond has a specific 
 * HTML5
 * CSS
 * Bootstrap
-* Javascript
+* JQuery
 
     
 ## Developer
